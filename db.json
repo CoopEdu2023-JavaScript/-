@@ -1,0 +1,58 @@
+{
+  "books": [
+    {
+      "name": "张恩淇",
+      "points": 1,
+      "id": "1",
+      "selected": false
+    },
+    {
+      "name": "王子浩然",
+      "points": 0,
+      "id": "2",
+      "selected": false
+    },
+    {
+      "name": "赵胤轩",
+      "points": 0,
+      "id": "3",
+      "selected": false
+    },
+    {
+      "name": "曾奕洲",
+      "points": 0,
+      "id": "4",
+      "selected": false
+    },
+    {
+      "name": "付子豪",
+      "points": 0,
+      "id": "5",
+      "selected": false
+    },
+    {
+      "name": "段啸俣",
+      "points": 0,
+      "id": "6",
+      "selected": false
+    },
+    {
+      "name": "高涵",
+      "points": 1,
+      "id": "7",
+      "selected": false
+    },
+    {
+      "name": "王子元",
+      "points": 1,
+      "id": "8",
+      "selected": false
+    },
+    {
+      "name": "吴廷潇",
+      "points": 0,
+      "id": "9",
+      "selected": false
+    }
+  ]
+}
