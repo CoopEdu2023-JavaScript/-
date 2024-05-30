@@ -1,0 +1,52 @@
+.callroll {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .callroll h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .callroll ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .callroll ul li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .callroll .answer {
+    display: block;
+    margin: 20px auto;
+  }
+  
+  .callroll .semi-modal-footer {
+    text-align: center;
+  }
+  
+  .callroll table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .callroll table th, 
+  .callroll table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .callroll .semi-select {
+    width: 100%;
+  }
+  

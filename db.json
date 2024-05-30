@@ -1,0 +1,76 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "name": "张恩淇",
+      "totalPoints": 0,
+      "currentPoints": 0,
+      "selected": false,
+      "attendance": []
+    },
+    {
+      "id": "2",
+      "name": "王子浩然",
+      "totalPoints": 0,
+      "currentPoints": 1,
+      "selected": true,
+      "attendance": []
+    },
+    {
+      "id": "3",
+      "name": "赵胤轩",
+      "totalPoints": 0,
+      "currentPoints": 0,
+      "selected": false,
+      "attendance": []
+    },
+    {
+      "id": "4",
+      "name": "曾奕洲",
+      "totalPoints": 0,
+      "currentPoints": 2,
+      "selected": true,
+      "attendance": []
+    },
+    {
+      "id": "5",
+      "name": "付子豪",
+      "totalPoints": 0,
+      "currentPoints": 0,
+      "selected": false,
+      "attendance": []
+    },
+    {
+      "id": "6",
+      "name": "段啸俣",
+      "totalPoints": 0,
+      "currentPoints": 2,
+      "selected": true,
+      "attendance": []
+    },
+    {
+      "id": "7",
+      "name": "高涵",
+      "totalPoints": 0,
+      "currentPoints": 0,
+      "selected": false,
+      "attendance": []
+    },
+    {
+      "id": "8",
+      "name": "王子元",
+      "totalPoints": 0,
+      "currentPoints": 1,
+      "selected": true,
+      "attendance": []
+    },
+    {
+      "id": "9",
+      "name": "吴廷潇",
+      "totalPoints": 0,
+      "currentPoints": 0,
+      "selected": false,
+      "attendance": []
+    }
+  ]
+}
