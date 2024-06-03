@@ -6,15 +6,29 @@
       "totalPoints": 0,
       "currentPoints": 0,
       "selected": false,
-      "attendance": []
+      "attendance": [
+        {
+          "date": "2024/5/31",
+          "status": "出席"
+        }
+      ]
     },
     {
       "id": "2",
       "name": "王子浩然",
-      "totalPoints": 0,
-      "currentPoints": 1,
-      "selected": true,
-      "attendance": []
+      "totalPoints": 1,
+      "currentPoints": 0,
+      "selected": false,
+      "attendance": [
+        {
+          "date": "2024/5/31",
+          "status": "出席"
+        },
+        {
+          "date": "2024/5/31",
+          "status": "出席"
+        }
+      ]
     },
     {
       "id": "3",
@@ -22,30 +36,45 @@
       "totalPoints": 0,
       "currentPoints": 0,
       "selected": false,
-      "attendance": []
+      "attendance": [
+        {
+          "date": "2024/5/31",
+          "status": "出席"
+        }
+      ]
     },
     {
       "id": "4",
       "name": "曾奕洲",
-      "totalPoints": 0,
-      "currentPoints": 2,
-      "selected": true,
-      "attendance": []
+      "totalPoints": 2,
+      "currentPoints": 0,
+      "selected": false,
+      "attendance": [
+        {
+          "date": "2024/5/31",
+          "status": "出席"
+        }
+      ]
     },
     {
       "id": "5",
       "name": "付子豪",
       "totalPoints": 0,
       "currentPoints": 0,
-      "selected": false,
-      "attendance": []
+      "selected": true,
+      "attendance": [
+        {
+          "date": "2024/5/31",
+          "status": "出席"
+        }
+      ]
     },
     {
       "id": "6",
       "name": "段啸俣",
-      "totalPoints": 0,
-      "currentPoints": 2,
-      "selected": true,
+      "totalPoints": 2,
+      "currentPoints": 0,
+      "selected": false,
       "attendance": []
     },
     {
@@ -53,15 +82,15 @@
       "name": "高涵",
       "totalPoints": 0,
       "currentPoints": 0,
-      "selected": false,
+      "selected": true,
       "attendance": []
     },
     {
       "id": "8",
       "name": "王子元",
-      "totalPoints": 0,
-      "currentPoints": 1,
-      "selected": true,
+      "totalPoints": 1,
+      "currentPoints": 0,
+      "selected": false,
       "attendance": []
     },
     {
@@ -72,5 +101,15 @@
       "selected": false,
       "attendance": []
     }
-  ]
+  
+  ],
+
+
+  "users": [{
+    "password": "1234567890",
+    "username": "1234567890"
+    
+  }]
 }
+  
+

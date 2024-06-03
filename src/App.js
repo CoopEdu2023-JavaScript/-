@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
 import CourseList from './Courselist/CourseList';
 import CourseDetails from './Courselist/CourseDetails';
 import Login from './login/login';
+import Register from './login/Register';
 import CallrollTab from './pages/callroll/CallrollTab';
 import './App.css';
 
@@ -23,14 +24,17 @@ const App = () => {
   const router = createBrowserRouter([
     { path: '/', element: <div>欢迎访问首页</div> },
     { path: '/login', element: <Login /> },
+    { path: '/register', element: <Register /> },
     {
       path: '/courses',
       element: <CourseList courses={courses} onSelectCourse={handleSelectCourse} />,
     },
     {
       path: '/courses/:courseId',
-      element: (
+      element: selectedCourse ? (
         <CourseDetails course={selectedCourse} />
+      ) : (
+        <div>请选择一个课程</div>
       ),
     },
     { path: '/callroll', element: <CallrollTab /> },

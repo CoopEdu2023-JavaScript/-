@@ -4,40 +4,43 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from "./index.module.scss";
 
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate();
   const { Title, Text } = Typography;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
-  const login = () => {
-    fetch('http://localhost:3000/users')
-      .then(response => response.json())
-      .then(users => {
-        const user = users.find(user => {console.log(user,username,password);return user.username === username && user.password === password});
-        if (user) {
-          console.log('登录成功，跳转至课程选择页面 /courses');
-          navigate('/courses');
+  const register = () => {
+    fetch('http://localhost:3000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log('注册成功，跳转至登录页面 /login');
+          navigate('/login');
         } else {
-          setError('用户名或密码错误');
+          setError('注册失败，请稍后再试');
         }
       })
       .catch(err => {
-        setError('登录失败，请稍后再试');
+        setError('注册失败，请稍后再试');
       });
   };
 
   return (
     <div className={styles.callroll}>
-      <Title>欢迎登录教师点名系统</Title>
+      <Title>注册新账号</Title>
       <Input
         autoFocus
         value={username}
         placeholder='请输入账号'
         onChange={(event) => {
-          console.log(event)
-          setUsername(event);
+          setUsername(event.target.value);
         }}
       />
       <Input
@@ -45,16 +48,16 @@ const Login = () => {
         value={password}
         placeholder='请输入密码'
         onChange={(event) => {
-          setPassword(event);
+          setPassword(event.target.value);
         }}
       />
       {error && <Text type="danger">{error}</Text>}
-      <Button onClick={login} theme='solid'>
-        登录
+      <Button onClick={register} theme='solid'>
+        注册
       </Button>
-      <Text>如果还没有账号请点击这里注册</Text>
+      <Text>已有账号？ <a onClick={() => navigate('/login')}>登录</a></Text>
     </div>
   );
 };
 
-export default Login;
+export default Register;
