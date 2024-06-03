@@ -61,7 +61,7 @@
       "name": "付子豪",
       "totalPoints": 0,
       "currentPoints": 0,
-      "selected": true,
+      "selected": false,
       "attendance": [
         {
           "date": "2024/5/31",
@@ -101,15 +101,26 @@
       "selected": false,
       "attendance": []
     }
-  
   ],
-
-
-  "users": [{
-    "password": "1234567890",
-    "username": "1234567890"
-    
-  }]
+  "users": [
+    {
+      "password": "1234567890",
+      "username": "1234567890"
+    },
+    {
+      "id": "5e0a",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "381a",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "a1d4",
+      "username": "",
+      "password": ""
+    }
+  ]
 }
-  
-

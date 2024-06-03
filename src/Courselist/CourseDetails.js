@@ -6,7 +6,6 @@ const CourseDetails = ({ course, onStartRollCall }) => {
   const navigate = useNavigate();
 
   const handleStartRollCall = () => {
-    onStartRollCall();
     navigate('/callroll');
   };
 
