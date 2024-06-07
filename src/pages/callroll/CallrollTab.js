@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Modal, Select, Table } from '@douyinfe/semi-ui';
+import { Button, Modal, Select, Table, Input } from '@douyinfe/semi-ui';
 import useSWR from 'swr';
-import { fetchStudents, updateStudent, updateStudentsBulk } from './requests';
+import { fetchStudents, updateStudent, updateStudentsBulk, addStudent } from './requests';
 import './CallrollTab.css';
 
 const CallrollTab = () => {
@@ -11,6 +11,8 @@ const CallrollTab = () => {
   const [attendance, setAttendance] = useState({});
   const [scoreModalVisible, setScoreModalVisible] = useState(false);
   const [groups, setGroups] = useState([]);
+  const [addStudentVisible, setAddStudentVisible] = useState(false);
+  const [newStudent, setNewStudent] = useState({ name: '', selected: false, currentPoints: 0, totalPoints: 0 });
 
   const { data: students, mutate } = useSWR("/students", fetchStudents);
 
@@ -76,11 +78,12 @@ const CallrollTab = () => {
   };
 
   const handleAttendanceChange = (id, status) => {
-    setAttendance(prev => ({ 
-      ...prev, 
-      [id]: [...prev[id], { date: new Date().toLocaleDateString(), status }] 
+    setAttendance(prev => ({
+      ...prev,
+      [id]: [...prev[id], { date: new Date().toLocaleDateString(), status }]
     }));
   };
+  
 
   const handleSaveAttendance = async () => {
     const updatePromises = students.map(student =>
@@ -108,6 +111,22 @@ const CallrollTab = () => {
       newGroups[index % groupCount].push(student);
     });
     setGroups(newGroups);
+  };
+
+  const showAddStudentDialog = () => {
+    setAddStudentVisible(true);
+  };
+
+  const handleAddStudentOk = async () => {
+    await addStudent(newStudent);
+    mutate();
+    setAddStudentVisible(false);
+    setNewStudent({ name: '', selected: false, currentPoints: 0, totalPoints: 0 });
+  };
+
+  const handleAddStudentCancel = () => {
+    setAddStudentVisible(false);
+    setNewStudent({ name: '', selected: false, currentPoints: 0, totalPoints: 0 });
   };
 
   return (
@@ -149,6 +168,24 @@ const CallrollTab = () => {
       </Modal>
 
       <Button onClick={handleEndClass}>下课</Button>
+      <Button onClick={showAddStudentDialog}>添加学生</Button>
+
+      <Modal
+        title="添加学生"
+        visible={addStudentVisible}
+        onOk={handleAddStudentOk}
+        onCancel={handleAddStudentCancel}
+        closeOnEsc={true}
+      >
+        <div>
+          <p>学生姓名:</p>
+          <Input
+            value={newStudent.name}
+            onChange={(value) => setNewStudent(prev => ({ ...prev, name: value }))}
+            placeholder="输入学生姓名"
+          />
+        </div>
+      </Modal>
 
       <h2>分组</h2>
       <Select value={groupCount} onChange={handleGroupChange}>
@@ -171,23 +208,27 @@ const CallrollTab = () => {
       </div>
 
       <h2>考勤</h2>
-      <Table dataSource={students} columns={[
-        {
-          title: '姓名',
-          dataIndex: 'name',
-        },
-        {
-          title: '考勤',
-          render: (text, record) => (
-            <Button 
-              onClick={() => handleAttendanceChange(record.id, '出席')} 
-              theme={attendance[record.id]?.slice(-1)[0]?.status === '出席' ? 'solid' : 'border'}
-            >
-              {attendance[record.id]?.slice(-1)[0]?.status === '出席' ? '出席' : '未出席'}
-            </Button>
-          ),
-        },
-      ]} />
+<Table dataSource={students} columns={[
+  {
+    title: '姓名',
+    dataIndex: 'name',
+  },
+  {
+    title: '考勤',
+    render: (text, record) => (
+      <Select
+        value={attendance[record.id]?.slice(-1)[0]?.status || '出席'}
+        onChange={status => handleAttendanceChange(record.id, status)}
+      >
+        <Select.Option value="出席">出席</Select.Option>
+        <Select.Option value="未出席">未出席</Select.Option>
+        <Select.Option value="迟到">迟到</Select.Option>
+      </Select>
+    ),
+  },
+]} />
+<Button onClick={handleSaveAttendance}>保存考勤</Button>
+
       <Button onClick={handleSaveAttendance}>保存考勤</Button>
 
       <h2>课堂表现分统计</h2>

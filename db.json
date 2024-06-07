@@ -10,6 +10,10 @@
         {
           "date": "2024/5/31",
           "status": "出席"
+        },
+        {
+          "date": "2024/6/4",
+          "status": "出席"
         }
       ]
     },
@@ -72,17 +76,22 @@
     {
       "id": "6",
       "name": "段啸俣",
-      "totalPoints": 2,
+      "totalPoints": 3,
       "currentPoints": 0,
       "selected": false,
-      "attendance": []
+      "attendance": [
+        {
+          "date": "2024/6/4",
+          "status": "出席"
+        }
+      ]
     },
     {
       "id": "7",
       "name": "高涵",
       "totalPoints": 0,
       "currentPoints": 0,
-      "selected": true,
+      "selected": false,
       "attendance": []
     },
     {
@@ -100,12 +109,27 @@
       "currentPoints": 0,
       "selected": false,
       "attendance": []
+    },
+    {
+      "id": "62ca",
+      "name": "demo",
+      "selected": false,
+      "currentPoints": 0,
+      "totalPoints": 0
+    },
+    {
+      "id": "0c0f",
+      "name": "demo1",
+      "selected": true,
+      "currentPoints": 1,
+      "totalPoints": 0
     }
   ],
   "users": [
     {
       "password": "1234567890",
-      "username": "1234567890"
+      "username": "1234567890",
+      "id": "f7e3"
     },
     {
       "id": "5e0a",
@@ -119,6 +143,16 @@
     },
     {
       "id": "a1d4",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "c668",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "1085",
       "username": "",
       "password": ""
     }
