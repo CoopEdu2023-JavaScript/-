@@ -49,4 +49,55 @@
   .callroll .semi-select {
     width: 100%;
   }
-  
+  /* 广告部分样式 */
+.ad-section {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.ad-section a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.ad-section img {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.2s;
+}
+
+.ad-section img:hover {
+  transform: scale(1.05);
+}
+
+.ad-text {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* 课程列表样式 */
+.course-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.course-item {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.course-item:hover {
+  background-color: #f1f1f1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -115,14 +115,21 @@
       "name": "demo",
       "selected": false,
       "currentPoints": 0,
-      "totalPoints": 0
+      "totalPoints": 0,
+      "attendance": [
+        {
+          "date": "2024/6/11",
+          "status": "未出席"
+        }
+      ]
     },
     {
       "id": "0c0f",
       "name": "demo1",
       "selected": true,
       "currentPoints": 1,
-      "totalPoints": 0
+      "totalPoints": 0,
+      "attendance": []
     }
   ],
   "users": [

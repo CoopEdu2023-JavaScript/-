@@ -13,6 +13,7 @@ const CallrollTab = () => {
   const [groups, setGroups] = useState([]);
   const [addStudentVisible, setAddStudentVisible] = useState(false);
   const [newStudent, setNewStudent] = useState({ name: '', selected: false, currentPoints: 0, totalPoints: 0 });
+  const [timeRemaining, setTimeRemaining] = useState(45 * 60); // 45分钟的倒计时（以秒为单位）
 
   const { data: students, mutate } = useSWR("/students", fetchStudents);
 
@@ -26,10 +27,31 @@ const CallrollTab = () => {
     }
   }, [students]);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeRemaining((prevTime) => {
+        if (prevTime <= 1) {
+          clearInterval(timer);
+          handleEndClass(); // 下课
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  };
+
   const showDialog = () => {
     const unselectedStudents = students.filter(student => !student.selected);
-    let randomIndex = Math.floor(Math.random() * unselectedStudents.length);
-    let randomPerson = unselectedStudents[randomIndex];
+    const randomIndex = Math.floor(Math.random() * unselectedStudents.length);
+    const randomPerson = unselectedStudents[randomIndex];
     setCurrentStudent(randomPerson);
     setVisible(true);
   };
@@ -83,7 +105,6 @@ const CallrollTab = () => {
       [id]: [...prev[id], { date: new Date().toLocaleDateString(), status }]
     }));
   };
-  
 
   const handleSaveAttendance = async () => {
     const updatePromises = students.map(student =>
@@ -131,6 +152,17 @@ const CallrollTab = () => {
 
   return (
     <div className="callroll">
+            <div className="ad-section">
+        <a href="https://chalk-c3.seiue.com/profiles/me/recent/attendances" target="_blank" rel="noopener noreferrer">
+        <img 
+            src="https://pp.myapp.com/ma_icon/0/icon_53933483_1674118988/256"
+            alt="Advertisement"
+            width="320" 
+            height="240"
+          />
+        </a>
+        <p>This domain is for use in illustrative examples in documents. You may use this domain in literature without prior coordination or asking for permission.</p>
+      </div>
       <h2>点名</h2>
       <ul>
         {students && students.map((student) => (
@@ -208,27 +240,25 @@ const CallrollTab = () => {
       </div>
 
       <h2>考勤</h2>
-<Table dataSource={students} columns={[
-  {
-    title: '姓名',
-    dataIndex: 'name',
-  },
-  {
-    title: '考勤',
-    render: (text, record) => (
-      <Select
-        value={attendance[record.id]?.slice(-1)[0]?.status || '出席'}
-        onChange={status => handleAttendanceChange(record.id, status)}
-      >
-        <Select.Option value="出席">出席</Select.Option>
-        <Select.Option value="未出席">未出席</Select.Option>
-        <Select.Option value="迟到">迟到</Select.Option>
-      </Select>
-    ),
-  },
-]} />
-<Button onClick={handleSaveAttendance}>保存考勤</Button>
-
+      <Table dataSource={students} columns={[
+        {
+          title: '姓名',
+          dataIndex: 'name',
+        },
+        {
+          title: '考勤',
+          render: (text, record) => (
+            <Select
+              value={attendance[record.id]?.slice(-1)[0]?.status || '出席'}
+              onChange={status => handleAttendanceChange(record.id, status)}
+            >
+              <Select.Option value="出席">出席</Select.Option>
+              <Select.Option value="未出席">未出席</Select.Option>
+              <Select.Option value="迟到">迟到</Select.Option>
+            </Select>
+          ),
+        },
+      ]} />
       <Button onClick={handleSaveAttendance}>保存考勤</Button>
 
       <h2>课堂表现分统计</h2>
@@ -246,6 +276,9 @@ const CallrollTab = () => {
           dataIndex: 'totalPoints',
         },
       ]} />
+
+      <h2>距下课还有：{formatTime(timeRemaining)}</h2>
+      
     </div>
   );
 };
